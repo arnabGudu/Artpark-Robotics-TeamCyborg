@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-1-g15f4949  Build Version: 1.6.7594.29634
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="washroom_cleaner">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.601644962644725 -2.66077667204785 1.07406060308773"
+        rpy="0 0 0" />
+      <mass
+        value="4121.17205882354" />
+      <inertia
+        ixx="8967.73927007271"
+        ixy="-240.759163721415"
+        ixz="-31.7872032082176"
+        iyy="9153.72803115491"
+        iyz="49.2508163326323"
+        izz="10319.4515591888" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://washroom_cleaner/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://washroom_cleaner/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="link_1">
+    <inertial>
+      <origin
+        xyz="0.139786452389953 1.94198166828418 1.00019471183636"
+        rpy="0 0 0" />
+      <mass
+        value="31.7768042614532" />
+      <inertia
+        ixx="0.824250395837601"
+        ixy="-0.00234138477343735"
+        ixz="0.00058303509795974"
+        iyy="0.617206027497101"
+        iyz="-0.0019773474216285"
+        izz="1.17494027287568" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://washroom_cleaner/meshes/link_1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://washroom_cleaner/meshes/link_1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_1"
+    type="fixed">
+    <origin
+      xyz="-0.23311 -1.3069 -0.068158"
+      rpy="0 0 3.1416" />
+    <parent
+      link="base_link" />
+    <child
+      link="link_1" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+</robot>
