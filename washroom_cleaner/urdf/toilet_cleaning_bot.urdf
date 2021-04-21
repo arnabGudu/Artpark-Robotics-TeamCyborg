@@ -1,0 +1,496 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com)
+     Commit Version: 1.6.0-1-g15f4949  Build Version: 1.6.7594.29634
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="toilet_cleaning_bot">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.40109 0.36844 0.563"
+        rpy="0 0 0" />
+      <mass
+        value="160.21" />
+      <inertia
+        ixx="6.5937"
+        ixy="0.0029926"
+        ixz="-0.00082692"
+        iyy="12.559"
+        iyz="0.12266"
+        izz="8.2635" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://washroom_cleaner/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://washroom_cleaner/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="link_1">
+    <inertial>
+      <origin
+        xyz="-0.035039 0.20575 0.13323"
+        rpy="0 0 0" />
+      <mass
+        value="5.5621" />
+      <inertia
+        ixx="0.013333"
+        ixy="-0.00022175"
+        ixz="3.9698E-06"
+        iyy="0.013796"
+        iyz="3.312E-06"
+        izz="0.021334" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://washroom_cleaner/meshes/link_1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.25098 0.25098 0.25098 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://washroom_cleaner/meshes/link_1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_1"
+    type="fixed">
+    <origin
+      xyz="0.27699 -0.62513 0.49989"
+      rpy="-1.5708 -0.34065 -1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="link_1" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="link_1.1">
+    <inertial>
+      <origin
+        xyz="-0.026117 0.15728 -0.010906"
+        rpy="0 0 0" />
+      <mass
+        value="4.4265" />
+      <inertia
+        ixx="0.049934"
+        ixy="0.007674"
+        ixz="0.00052707"
+        iyy="0.062713"
+        iyz="0.0029422"
+        izz="0.086055" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://washroom_cleaner/meshes/link_1.1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://washroom_cleaner/meshes/link_1.1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_1.1"
+    type="fixed">
+    <origin
+      xyz="0.078034 0.21007 0.11645"
+      rpy="0.34065 -1.5708 0" />
+    <parent
+      link="link_1" />
+    <child
+      link="link_1.1" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="link_1.2">
+    <inertial>
+      <origin
+        xyz="-0.00702860471577926 -0.000130771120940731 0.0296200021732783"
+        rpy="0 0 0" />
+      <mass
+        value="0.151435450174544" />
+      <inertia
+        ixx="8.93402775522686E-05"
+        ixy="-2.78967418953546E-08"
+        ixz="1.08518099802283E-05"
+        iyy="9.29662903831726E-05"
+        iyz="1.95890478711304E-08"
+        izz="0.000150338419401213" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://washroom_cleaner/meshes/link_1.2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.501960784313725 0.501960784313725 0.501960784313725 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://washroom_cleaner/meshes/link_1.2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_1.2"
+    type="revolute">
+    <origin
+      xyz="-0.02917 -0.39539 0.12422"
+      rpy="-1.5708 -1.4713 -2.8009" />
+    <parent
+      link="link_1" />
+    <child
+      link="link_1.2" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="3.14"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="link_1.2.1">
+    <inertial>
+      <origin
+        xyz="0.0580655494615208 0.0013300729572176 0.0142754823090114"
+        rpy="0 0 0" />
+      <mass
+        value="0.083649973397503" />
+      <inertia
+        ixx="2.13379078089922E-05"
+        ixy="1.43500733218594E-06"
+        ixz="1.41338643742856E-06"
+        iyy="0.000109256671317035"
+        iyz="-3.43509398476217E-08"
+        izz="0.000107189795764206" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://washroom_cleaner/meshes/link_1.2.1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://washroom_cleaner/meshes/link_1.2.1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_1.2.1"
+    type="revolute">
+    <origin
+      xyz="0 0 0.033695"
+      rpy="0 -1.2217 -1.5708" />
+    <parent
+      link="link_1.2" />
+    <child
+      link="link_1.2.1" />
+    <axis
+      xyz="0.93969 0 0.34202" />
+    <limit
+      lower="3.14"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="link_1.2.1-2">
+    <inertial>
+      <origin
+        xyz="-0.129120759127459 -0.000969520216186681 -0.014695438196705"
+        rpy="0 0 0" />
+      <mass
+        value="0.0550083133869526" />
+      <inertia
+        ixx="8.16092041413149E-06"
+        ixy="-2.84603070277445E-19"
+        ixz="1.22078623523026E-19"
+        iyy="0.000214945524527617"
+        iyz="1.35525271560688E-20"
+        izz="0.000220874250417479" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://washroom_cleaner/meshes/link_1.2.1-2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://washroom_cleaner/meshes/link_1.2.1-2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_1.2.1-2"
+    type="revolute">
+    <origin
+      xyz="0.10218 0 0.03719"
+      rpy="-1.5708 -0.4149 -3.1416" />
+    <parent
+      link="link_1.2.1" />
+    <child
+      link="link_1.2.1-2" />
+    <axis
+      xyz="0.7221 0.69179 0" />
+    <limit
+      lower="3.14"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="Link">
+    <inertial>
+      <origin
+        xyz="0.187048315606572 0.0201228496753148 -0.124647198388031"
+        rpy="0 0 0" />
+      <mass
+        value="0.158326205342065" />
+      <inertia
+        ixx="3.46195149015416E-05"
+        ixy="-1.68893148018067E-07"
+        ixz="-2.7533004565103E-07"
+        iyy="3.1703173224957E-05"
+        iyz="-2.95285123650717E-07"
+        izz="3.89884403632016E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://washroom_cleaner/meshes/Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://washroom_cleaner/meshes/Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint"
+    type="fixed">
+    <origin
+      xyz="-0.095207 -0.09121 0"
+      rpy="-1.5708 0 -3.1416" />
+    <parent
+      link="link_1.2.1-2" />
+    <child
+      link="Link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="link_2">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="0" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://washroom_cleaner/meshes/link_2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://washroom_cleaner/meshes/link_2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_2"
+    type="revolute">
+    <origin
+      xyz="0.36371 -0.96374 0.36981"
+      rpy="1.5708 0 0.072106" />
+    <parent
+      link="base_link" />
+    <child
+      link="link_2" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="3.14"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="link_2.1">
+    <inertial>
+      <origin
+        xyz="-0.159302367714984 -0.121667828083279 0.191496939311499"
+        rpy="0 0 0" />
+      <mass
+        value="4.88576945217599" />
+      <inertia
+        ixx="0.0182504857476174"
+        ixy="-0.00308030713845039"
+        ixz="8.43868314392727E-05"
+        iyy="0.0164743625405019"
+        iyz="4.8103045526283E-05"
+        izz="0.0226935778071188" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://washroom_cleaner/meshes/link_2.1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 0.501960784313725 0.501960784313725 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://washroom_cleaner/meshes/link_2.1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_2.1"
+    type="revolute">
+    <origin
+      xyz="-0.16411 -0.01 0.13706"
+      rpy="0 1.4907 0" />
+    <parent
+      link="link_2" />
+    <child
+      link="link_2.1" />
+    <axis
+      xyz="0 0 0" />
+    <limit
+      lower="3.14"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+</robot>
