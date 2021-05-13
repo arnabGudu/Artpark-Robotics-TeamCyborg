@@ -1,3 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <!-- Created for storing plugins while urdf is updated -->
+
+
+
+
+
+<!-- Controlling different joints for the bot : -->
+<gazebo>
+  <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+    <robotNamespace>/washroom_cleaner</robotNamespace>
+  </plugin>
+</gazebo>
+
+<transmission name="claw_transmission">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="joint_2">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="motor1">
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
