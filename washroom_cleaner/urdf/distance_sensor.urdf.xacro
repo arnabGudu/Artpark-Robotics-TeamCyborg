@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <xacro:property name="M_PI" value="3.1415926535897931" />
+
+    <xacro:macro name="distance_sensor_model" params="name parent *origin">
+      <joint name="${name}_joint" type="fixed">
+        <xacro:insert_block name="origin" />
+        <parent link="${parent}"/>
+        <child link="${name}_link"/>
+      </joint>
+
+      <gazebo reference="${name}_link">
+        <material>Gazebo/Gray</material>
+      </gazebo>
+
+      <link name="${name}_link">
+        <inertial>
+          <origin xyz="-4.3073E-05 0.0036756 -6.9914E-05" rpy="0 0 0" />
+          <mass value="0.0038351" />
+          <inertia ixx="1.5937E-07" ixy="-8.5425E-10" ixz="-3.4091E-09" iyy="7.6875E-07" iyz="2.6506E-09" izz="7.2622E-07" />
+        </inertial>
+        <visual>
+          <origin xyz="0 0 0" rpy="0 0 ${-M_PI/2}" />
+          <geometry>
+            <mesh filename="package://washroom_cleaner/meshes/distance_sensor_bot.STL" />
+          </geometry>
+        </visual>
+        <collision>
+          <origin xyz="0 0 0" rpy="0 0 ${-M_PI/2}" />
+          <geometry>
+            <mesh filename="package://washroom_cleaner/meshes/distance_sensor_bot.STL" />
+          </geometry>
+        </collision>
+      </link>
+    </xacro:macro>
+
+    <xacro:macro name="distance_sensor" params="name parent *origin ros_topic frame_name update_rate ray_count min_angle max_angle min_range max_range noise">
+      <xacro:distance_sensor_model name="${name}" parent="${parent}">
+        <xacro:insert_block name="origin" />
+      </xacro:distance_sensor_model>
+
+      <gazebo reference="${name}_link">
+        <sensor type="ray" name="${name}">
+          <always_on>true</always_on>
+          <update_rate>${update_rate}</update_rate>
+          <pose>0 0 0 0 0 0</pose>
+          <visualize>1</visualize>
+          <ray>
+            <scan>
+              <horizontal>
+                <samples>${ray_count}</samples>
+                <resolution>1</resolution>
+                <min_angle>${min_angle * M_PI/180}</min_angle>
+                <max_angle>${max_angle * M_PI/180}</max_angle>
+              </horizontal>
+            </scan>
+            <range>
+              <min>${min_range}</min>
+              <max>${max_range}</max>
+              <resolution>0.01</resolution>
+            </range>
+            <xacro:if value="${noise == 'true'}">
+              <noise>
+                <type>gaussian</type>
+                <mean>0.0</mean>
+                <stddev>0.004</stddev>
+              </noise>
+            </xacro:if>
+          </ray>
+          <plugin name="gazebo_ros_${name}_controller" filename="libgazebo_ros_laser.so">
+            <topicName>${ros_topic}</topicName>
+            <frameName>${frame_name}</frameName>
+          </plugin>
+        </sensor>
+      </gazebo>
+    </xacro:macro>
+</robot>

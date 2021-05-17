@@ -1,0 +1,529 @@
+<?xml version="1.0"?>
+
+<robot name="bot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!--<xacro:include filename="$(find hector_sensors_description)/urdf/sonar_sensor.urdf.xacro" />-->
+  <xacro:property name="pi" value="3.1415926535897931" />
+
+  <!-- Main link -->
+  <xacro:macro name="bot_base">
+    <gazebo reference="base_link">
+      <material>Gazebo/LightGray</material>
+    </gazebo>
+    <gazebo reference="left_front_wheel">
+      <material>Gazebo/DarkGray</material>
+    </gazebo>
+    <gazebo reference="left_rear_wheel">
+      <material>Gazebo/DarkGray</material>
+    </gazebo>
+    <gazebo reference="right_front_wheel">
+      <material>Gazebo/DarkGray</material>
+    </gazebo>
+    <gazebo reference="right_rear_wheel">
+      <material>Gazebo/DarkGray</material>
+    </gazebo>
+    <gazebo reference="brush">
+      <material>Gazebo/DarkGray</material>
+    </gazebo>
+    <gazebo reference="dustbin">
+      <material>Gazebo/Gray</material>
+    </gazebo>
+    <gazebo reference="claw_left">
+      <material>Gazebo/DarkGray</material>
+    </gazebo>
+    <gazebo reference="claw_right">
+      <material>Gazebo/DarkGray</material>
+    </gazebo>
+    <gazebo reference="drum_left">
+      <material>Gazebo/Red</material>
+    </gazebo>
+    <gazebo reference="drum_right">
+      <material>Gazebo/Red</material>
+    </gazebo>
+
+    <link name="base_link">
+      <inertial>
+        <origin
+          xyz="-0.014481 -0.00042641 0.0075303"
+          rpy="0 0 0" />
+        <mass
+          value="50" />
+        <inertia
+          ixx="7.1653"
+          ixy="-0.0082541"
+          ixz="0.15785"
+          iyy="6.184"
+          iyz="-0.0017661"
+          izz="11.053" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://washroom_cleaner/meshes/base_link_bot.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.79216 0.81961 0.93333 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://washroom_cleaner/meshes/base_link_bot.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <link name="left_front_wheel">
+      <inertial>
+        <origin
+          xyz="0.02 -6.9389E-18 -2.7756E-17"
+          rpy="0 0 0" />
+        <mass
+          value="0.99824" />
+        <inertia
+          ixx="0.0041209"
+          ixy="2.5714E-36"
+          ixz="-1.1888E-35"
+          iyy="0.0021935"
+          iyz="2.8905E-36"
+          izz="0.0021935" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://washroom_cleaner/meshes/left_front_wheel_bot.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.79216 0.81961 0.93333 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://washroom_cleaner/meshes/left_front_wheel_bot.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <joint name="left_front_wheel_joint" type="continuous">
+      <origin
+        xyz="0.19104 0.35474 -0.18656"
+        rpy="1.5708 0 1.5708" />
+      <parent
+        link="base_link" />
+      <child
+        link="left_front_wheel" />
+      <axis
+        xyz="1 0 0" />
+    </joint>
+    <link name="left_rear_wheel">
+      <inertial>
+        <origin
+          xyz="0.02 6.9389E-18 2.7756E-17"
+          rpy="0 0 0" />
+        <mass
+          value="0.99824" />
+        <inertia
+          ixx="0.0041209"
+          ixy="-1.1388E-35"
+          ixz="-1.1888E-35"
+          iyy="0.0021935"
+          iyz="-2.8671E-36"
+          izz="0.0021935" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://washroom_cleaner/meshes/left_rear_wheel_bot.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.79216 0.81961 0.93333 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://washroom_cleaner/meshes/left_rear_wheel_bot.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <joint name="left_rear_wheel_joint" type="continuous">
+      <origin
+        xyz="-0.053956 0.35474 -0.18656"
+        rpy="1.5708 0 1.5708" />
+      <parent
+        link="base_link" />
+      <child
+        link="left_rear_wheel" />
+      <axis
+        xyz="1 0 0" />
+    </joint>
+    <link name="right_rear_wheel">
+      <inertial>
+        <origin
+          xyz="-0.02 2.0817E-17 1.3878E-16"
+          rpy="0 0 0" />
+        <mass
+          value="0.99824" />
+        <inertia
+          ixx="0.0041209"
+          ixy="2.3082E-21"
+          ixz="-3.6632E-20"
+          iyy="0.0021935"
+          iyz="-2.7105E-20"
+          izz="0.0021935" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://washroom_cleaner/meshes/right_rear_wheel_bot.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.79216 0.81961 0.93333 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://washroom_cleaner/meshes/right_rear_wheel_bot.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <joint name="right_rear_wheel_joint" type="continuous">
+      <origin
+        xyz="-0.053956 -0.35526 -0.18656"
+        rpy="1.5059 0 1.5708" />
+      <parent
+        link="base_link" />
+      <child
+        link="right_rear_wheel" />
+      <axis
+        xyz="1 0 0" />
+    </joint>
+    <link name="right_front_wheel">
+      <inertial>
+        <origin
+          xyz="-0.02 3.4694E-17 2.498E-16"
+          rpy="0 0 0" />
+        <mass
+          value="0.99824" />
+        <inertia
+          ixx="0.0041209"
+          ixy="-8.3515E-23"
+          ixz="1.2599E-21"
+          iyy="0.0021935"
+          iyz="-1.6263E-19"
+          izz="0.0021935" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://washroom_cleaner/meshes/right_front_wheel_bot.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.79216 0.81961 0.93333 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://washroom_cleaner/meshes/right_front_wheel_bot.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <joint name="right_front_wheel_joint" type="continuous">
+      <origin
+        xyz="0.19104 -0.35526 -0.18656"
+        rpy="1.041 0 1.5708" />
+      <parent
+        link="base_link" />
+      <child
+        link="right_front_wheel" />
+      <axis
+        xyz="1 0 0" />
+    </joint>
+    <link name="brush">
+      <inertial>
+        <origin
+          xyz="2.7756E-17 -0.025 0"
+          rpy="0 0 0" />
+        <mass
+          value="1.4726" />
+        <inertia
+          ixx="0.0042184"
+          ixy="-8.0631E-36"
+          ixz="-2.3434E-37"
+          iyy="0.0078233"
+          iyz="-1.7072E-35"
+          izz="0.0042184" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://washroom_cleaner/meshes/brush_bot.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.79216 0.81961 0.93333 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://washroom_cleaner/meshes/brush_bot.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <joint name="brush_joint" type="continuous">
+      <origin
+        xyz="-0.075411 0.0095022 -0.20156"
+        rpy="1.5708 0 1.5708" />
+      <parent
+        link="base_link" />
+      <child
+        link="brush" />
+      <axis
+        xyz="0 1 0" />
+    </joint>
+
+    <link name="dustbin">
+      <inertial>
+        <origin xyz="0.00043559 0.046483 -0.014187" rpy="0 0 0" />
+        <mass value="3.3913" />
+        <inertia ixx="0.050849" ixy="0.0007766" ixz="3.7083E-06" iyy="0.053672" iyz="0.0030717" izz="0.078293" />
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://washroom_cleaner/meshes/dustbin_bot.STL" />
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://washroom_cleaner/meshes/dustbin_bot.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <joint name="dustbin_joint" type="prismatic">
+      <origin xyz="0.18105 0.0059196 0" rpy="1.5708 0 1.5708" />
+      <parent link="base_link" />
+      <child link="dustbin" />
+      <axis xyz="0 1 0" />
+      <limit lower="0" upper="0.1" effort="0.01" velocity="0.1" />
+    </joint>
+
+    <link name="claw_right">
+      <inertial>
+        <origin xyz="-0.039152 0.0075 0.084902" rpy="0 0 0" />
+        <mass value="0.11123" />
+        <inertia ixx="0.00028997" ixy="-7.7846E-22" ixz="-3.8528E-05" iyy="0.00031833" iyz="-4.6594E-22" izz="3.2529E-05" />
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://washroom_cleaner/meshes/claw_right_bot.STL" />
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://washroom_cleaner/meshes/claw_right_bot.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <joint name="claw_right_joint" type="fixed">
+      <origin xyz="0.46675 -0.092741 -0.00656" rpy="1.5708 0 1.5708" />
+      <parent link="base_link" />
+      <child link="claw_right" />
+      <axis xyz="1 0 0" />
+      <limit lower="0" upper="0.05" effort="0.1" velocity="0.1" />
+    </joint>
+
+    <link name="drum_right">
+      <inertial>
+        <origin xyz="1.1102E-16 -0.13422 -1.1102E-16" rpy="0 0 0" />
+        <mass value="0.94943" />
+        <inertia ixx="0.0018019" ixy="5.5041E-20" ixz="0" iyy="0.0011779" iyz="1.3414E-19" izz="0.0018019" />
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://washroom_cleaner/meshes/drum_right_bot.STL" />
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://washroom_cleaner/meshes/drum_right_bot.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <joint name="drum_right_joint" type="continuous">
+      <origin xyz="-0.014509 0 0.17408" rpy="3.1416 -0.70288 3.1416" />
+      <parent link="claw_right" />
+      <child link="drum_right" />
+      <axis xyz="0 1 0" />
+    </joint>
+
+    <link name="claw_left">
+      <inertial>
+        <origin
+          xyz="0.038257 0.0075 0.079083"
+          rpy="0 0 0" />
+        <mass
+          value="0.10469" />
+        <inertia
+          ixx="0.00024535"
+          ixy="9.5759E-22"
+          ixz="-4.8347E-06"
+          iyy="0.00026571"
+          iyz="-2.0581E-21"
+          izz="2.4286E-05" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://washroom_cleaner/meshes/claw_left_bot.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.79216 0.81961 0.93333 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://washroom_cleaner/meshes/claw_left_bot.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <joint name="claw_left_joint" type="fixed">
+      <origin xyz="0.46675 0.11148 -0.00656" rpy="1.5708 0 1.5708" />
+      <parent link="base_link" />
+      <child link="claw_left" />
+      <axis xyz="1 0 0" />
+      <limit lower="-0.05" upper="0" effort="0.1" velocity="0.1" />
+    </joint>
+
+    <link name="drum_left">
+      <inertial>
+        <origin
+          xyz="2.7756E-17 -0.13422 0"
+          rpy="0 0 0" />
+        <mass
+          value="0.94943" />
+        <inertia
+          ixx="0.0018019"
+          ixy="-4.7822E-36"
+          ixz="-1.7244E-36"
+          iyy="0.0011779"
+          iyz="4.4771E-21"
+          izz="0.0018019" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://washroom_cleaner/meshes/drum_left_bot.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.50196 1 1 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://washroom_cleaner/meshes/drum_left_bot.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <joint name="drum_left_joint" type="continuous">
+      <origin
+        xyz="0.02761 0 0.15624"
+        rpy="0 0 0" />
+      <parent
+        link="claw_left" />
+      <child
+        link="drum_left" />
+      <axis
+        xyz="0 1 0" />
+    </joint>
+
+    <gazebo>
+      <plugin name="skid_steer_drive_controller" filename="libgazebo_ros_skid_steer_drive.so">
+        <updateRate>100.0</updateRate>
+        <robotNamespace>/</robotNamespace>
+        <leftFrontJoint>left_front_wheel_joint</leftFrontJoint>
+        <rightFrontJoint>right_front_wheel_joint</rightFrontJoint>
+        <leftRearJoint>left_rear_wheel_joint</leftRearJoint>
+        <rightRearJoint>right_rear_wheel_joint</rightRearJoint>
+        <wheelSeparation>0.71</wheelSeparation>
+        <wheelDiameter>0.215</wheelDiameter>
+        <robotBaseFrame>base_link</robotBaseFrame>
+        <torque>1</torque>
+        <topicName>cmd_vel</topicName>
+        <broadcastTF>false</broadcastTF>
+     </plugin>
+    </gazebo>
+  </xacro:macro>
+</robot>

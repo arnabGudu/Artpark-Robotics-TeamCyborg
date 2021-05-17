@@ -1,35 +1,43 @@
+<?xml version="1.0"?>
+
 <launch>
-  <param
-    name="robot_description"
-    textfile="$(find washroom_cleaner)/urdf/bot.urdf" />
-  <include
-    file="$(find gazebo_ros)/launch/empty_world.launch" />
-  <node
-    name="urdf_spawner"
-    pkg="gazebo_ros"
-    type="spawn_model"
-    respawn="false"
-    output="screen"
-    args="-urdf -model toilet_cleaning_bot -param robot_description"/>
-  <rosparam
-    file="$(find washroom_cleaner)/config/claw_control.yaml"
-    command="load"/>
-  <node
-    name="controller_spawner"
-    pkg="controller_manager"
-    type="spawner"
-    respawn="false"
-    output="screen"
-    ns="/washroom_cleaner"
-    args="claw_controller joint_state_controller"/>
-  <node
-    name="robot_state_publisher"
-    pkg="robot_state_publisher"
-    type="robot_state_publisher"
-    respawn="false"
-    output="screen">
-    <remap
-      from="/joint_states"
-      to="/washroom_cleaner/joint_states" />
-  </node>
+  <arg name="name" default="bot"/>
+  <arg name="model" default="$(find washroom_cleaner)/urdf/bot.urdf.xacro"/>
+  <arg name="tf_prefix" default="$(optenv ROS_NAMESPACE)"/>
+  <arg name="world_frame" default="world"/>
+  <arg name="base_link_frame" default="$(arg tf_prefix)/base_link"/>
+  <arg name="world_name" default=""/>
+  <arg name="spawn_only" default="false"/>
+
+  <arg name="x" default="0"/>
+  <arg name="y" default="0"/>
+  <arg name="z" default="0"/>
+
+  <arg name="paused" default="false"/>
+  <arg name="use_sim_time" default="true"/>
+  <arg name="gui" default="true"/>
+  <arg name="headless" default="false"/>
+  <arg name="debug" default="false"/>
+
+  <param name="robot_description" command="$(find xacro)/xacro '$(arg model)' base_link_frame:=$(arg base_link_frame) world_frame:=$(arg world_frame)" />
+  <param name="tf_prefix" type="string" value="$(arg tf_prefix)"/>
+  <param name="world_frame" type="string" value="$(arg world_frame)" />
+  <param name="base_link_frame" type="string" value="$(arg base_link_frame)" />
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch" if="$(eval arg('spawn_only') == false)">
+    <arg name="world_name" value="$(arg world_name)" if="$(eval arg('world_name') != '')"/>
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+    <arg name="gui" value="$(arg gui)"/>
+    <arg name="headless" value="$(arg headless)"/>
+    <arg name="debug" value="$(arg debug)"/>
+  </include>
+
+  <node name="spawn_robot" pkg="gazebo_ros" type="spawn_model" output="screen" respawn="false"
+        args="-urdf
+          -param robot_description
+          -model $(arg name)
+          -x $(arg x)
+          -y $(arg y)
+          -z $(arg z)" />
 </launch>
