@@ -16,5 +16,5 @@ This repository contains models made and code written by the members of Team Cyb
   ```
   b. For the bot:
   ```sh
-  $ roslaunch washroom_cleaner gazebo_bot.launch
+  $ roslaunch washroom_cleaner spawn_bot.launch
   ```
