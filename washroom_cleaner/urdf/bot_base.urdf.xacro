@@ -517,10 +517,10 @@
         <rightFrontJoint>right_front_wheel_joint</rightFrontJoint>
         <leftRearJoint>left_rear_wheel_joint</leftRearJoint>
         <rightRearJoint>right_rear_wheel_joint</rightRearJoint>
-        <wheelSeparation>0.71</wheelSeparation>
-        <wheelDiameter>0.215</wheelDiameter>
+        <wheelSeparation>0.79</wheelSeparation>
+        <wheelDiameter>0.18</wheelDiameter>
         <robotBaseFrame>base_link</robotBaseFrame>
-        <torque>1</torque>
+        <torque>5</torque>
         <topicName>cmd_vel</topicName>
         <broadcastTF>false</broadcastTF>
      </plugin>
